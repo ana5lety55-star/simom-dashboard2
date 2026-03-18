@@ -73,12 +73,6 @@ def login():
 if not st.session_state["login"]:
     login()
     st.stop()
-ebes agregar esto:
-
-menu = st.sidebar.radio(
-    "Menú",
-    ["Dashboard Operativo", "Dashboard Ejecutivo", "Historial", "Captura"]
-)
 
 # ---------------- DATOS ----------------
 prod = pd.read_excel("data/produccion.xlsx")
@@ -276,22 +270,3 @@ with st.form("form_produccion"):
 
         st.success("Datos capturados correctamente")
         st.dataframe(nuevo)
-menu = st.sidebar.radio(
-    "Menú",
-    ["Dashboard Operativo", "Dashboard Ejecutivo", "Historial", "Captura"]
-)
-if menu == "Dashboard Operativo":
-    st.title("Dashboard Operativo")
-
-elif menu == "Dashboard Ejecutivo":
-    st.title("Dashboard Ejecutivo")
-
-elif menu == "Historial":
-    st.title("Historial")
-
-elif menu == "Captura":
-    st.title("Captura de Datos")
-menu = st.sidebar.radio(
-    "app",
-    ["⚙️ Dashboard Operativo", "📊 Dashboard Ejecutivo", "📋 Historial", "📝 Captura"]
-)
