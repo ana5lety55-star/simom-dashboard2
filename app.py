@@ -73,6 +73,12 @@ def login():
 if not st.session_state["login"]:
     login()
     st.stop()
+ebes agregar esto:
+
+menu = st.sidebar.radio(
+    "Menú",
+    ["Dashboard Operativo", "Dashboard Ejecutivo", "Historial", "Captura"]
+)
 
 # ---------------- DATOS ----------------
 prod = pd.read_excel("data/produccion.xlsx")
