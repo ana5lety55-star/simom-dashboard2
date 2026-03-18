@@ -248,3 +248,44 @@ if st.button("Descargar PDF"):
     generar_pdf(data, ef, estado)
     with open("reporte_kpi.pdf", "rb") as f:
         st.download_button("Descargar", f)
+st.subheader("Captura de Datos")
+
+with st.form("form_produccion"):
+    fecha = st.date_input("Fecha")
+    area = st.text_input("Área")
+    producto = st.text_input("Producto")
+    maquina = st.text_input("Máquina")
+    produccion = st.number_input("Producción real", min_value=0)
+    
+    enviar = st.form_submit_button("Guardar")
+
+    if enviar:
+        nuevo = pd.DataFrame([{
+            "fecha": fecha,
+            "area": area,
+            "producto": producto,
+            "maquina": maquina,
+            "produccion_real": produccion
+        }])
+
+        st.success("Datos capturados correctamente")
+        st.dataframe(nuevo)
+menu = st.sidebar.radio(
+    "Menú",
+    ["Dashboard Operativo", "Dashboard Ejecutivo", "Historial", "Captura"]
+)
+if menu == "Dashboard Operativo":
+    st.title("Dashboard Operativo")
+
+elif menu == "Dashboard Ejecutivo":
+    st.title("Dashboard Ejecutivo")
+
+elif menu == "Historial":
+    st.title("Historial")
+
+elif menu == "Captura":
+    st.title("Captura de Datos")
+menu = st.sidebar.radio(
+    "app",
+    ["⚙️ Dashboard Operativo", "📊 Dashboard Ejecutivo", "📋 Historial", "📝 Captura"]
+)
